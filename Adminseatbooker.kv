@@ -1,0 +1,2707 @@
+ScreenManager:
+        Home_scr:
+        Login_scr:
+        Register_scr:
+        User_Dashboard:
+        Student_register:
+        Delete_student_registration:
+        Future_Booking:
+        Past_Analysis:
+        Hall_selection:
+        Account_setting:
+        Seat_selection1:
+        Seat_selection2:
+<DrawerClickableItem@MDNavigationDrawerItem>
+        focus_color:"800080"
+        text_color:"00FFFF"
+        selected_color:"FFD700"
+<DrawerLabelItem@MDNavigationDrawerItem>
+        focus_behavior:False
+        text_color:"00FFFF"
+
+<Home_scr>:
+        name:"home"
+        Image:
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDScreen:
+                MDNavigationLayout:
+                        MDScreenManager:
+                                MDScreen:
+                                        BoxLayout:
+                                                orientation: 'vertical'
+                                                MDTopAppBar:
+                                                        title: "TMU Library Admin Portal"
+                                                        md_bg_color:"#FFD700"
+                                                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                                                        right_action_items: [["login", lambda x: app.switch_to_login()]]
+                                                        elevation: 10
+                                                MDFloatLayout:
+                                                        #padding: "60dp"
+                                                        spacing:'2dp'
+                                                        MDCard:
+                                                                orientation: 'vertical'
+                                                                padding: "10dp"
+                                                                size_hint_y: None
+                                                                md_bg_color:"#999900"
+                                                                height: "100dp"
+                                                                pos_hint:{'center_x':0.5,'center_y':0.88}
+                                                                MDFloatLayout:
+                                                                        MDLabel:
+                                                                                text: "Booking and User Management!"
+                                                                                pos_hint:{'center_y':0.9}
+                                                                                halign: 'center'
+                                                                                font_color:"#000000"
+                                                                                font_style: "H5"
+
+                                                                        MDRaisedButton:
+                                                                                text: "Register"
+                                                                                size_hint: None, None
+                                                                                #md_bg_color:"#FFD700"
+                                                                                md_bg_color:"#ADD8E6"
+                                                                                pos_hint:{'center_x':0.4,'center_y':0.4}
+                                                                                size: "150dp", "40dp"
+                                                                                on_press: app.root.current = "register"
+
+                                                                        MDRaisedButton:
+                                                                                text: "Login"
+                                                                                spacing:"10dp"
+                                                                                md_bg_color:"#D3D3D3"
+                                                                                pos_hint: {'center_x': 0.6, 'center_y': 0.4}
+                                                                                on_press: app.root.current = "login"
+
+                                                        MDCard:
+                                                                orientation: 'vertical'
+                                                                padding: "10dp"
+                                                                size_hint: None, None
+                                                                size: "140dp", "70dp"
+                                                                md_bg_color:"#006600"
+                                                                pos_hint:{"center_x":0.15,'center_y':0.68}
+
+                                                                MDLabel:
+                                                                        text: "Manage Users Account"
+                                                                        halign: 'center'
+                                                                        font_style: "H6"
+                                                                        color:"#000000"
+
+
+                                                        MDCard:
+                                                                orientation: 'vertical'
+                                                                padding: "10dp"
+                                                                size_hint: None, None
+                                                                size: "140dp", "70dp"
+                                                                md_bg_color:"#009999"
+                                                                pos_hint:{"center_x":0.50,'center_y':0.68}
+                                                                MDLabel:
+                                                                        text: "Monitor Booking"
+                                                                        halign: 'center'
+                                                                        font_style: "H6"
+                                                        MDCard:
+                                                                orientation: 'vertical'
+                                                                padding: "10dp"
+                                                                size_hint: None, None
+                                                                size: "140dp", "70dp"
+                                                                md_bg_color:"00008B"
+                                                                pos_hint:{"center_x":0.85,'center_y':0.68}
+
+                                                                MDLabel:
+                                                                        text: "Booking Report"
+                                                                        halign: 'center'
+                                                                        font_style: "H6"
+
+                                                        MDCard:
+                                                                orientation: 'vertical'
+                                                                padding: "10dp"
+                                                                size_hint: None, None
+                                                                size: "140dp", "70dp"
+                                                                md_bg_color:"#990099"
+                                                                pos_hint:{"center_x":0.15,'center_y':0.5}
+
+                                                                MDLabel:
+                                                                        text: "Seat Analysis"
+                                                                        halign: 'center'
+                                                                        font_style: "H6"
+                                                                        color:"#000000"
+
+                                                        MDCard:
+                                                                orientation: 'vertical'
+                                                                padding: "10dp"
+                                                                size_hint: None, None
+                                                                size: "140dp", "70dp"
+                                                                md_bg_color:"#808080"
+                                                                pos_hint:{"center_x":0.50,'center_y':0.5}
+                                                                MDLabel:
+                                                                        text: "Activity Logs"
+                                                                        halign: 'center'
+                                                                        font_style: "H6"
+                                                                        color:"#000000"
+
+                                                        MDCard:
+                                                                orientation: 'vertical'
+                                                                padding: "10dp"
+                                                                size_hint: None, None
+                                                                size: "140dp", "70dp"
+                                                                md_bg_color:"#999900"
+                                                                pos_hint:{"center_x":0.85,'center_y':0.5}
+
+                                                                MDLabel:
+                                                                        text: "Quick Access"
+                                                                        halign: 'center'
+                                                                        font_style: "H6"
+                                                                        color:"#000000"
+
+
+
+                        MDNavigationDrawer:
+                                id:nav_drawer
+                                radius:(0,16,16,0)
+                                MDNavigationDrawerMenu:
+                                        DrawerClickableItem:
+                                                text:"Login"
+                                                on_press:
+                                                        nav_drawer.set_state('close')
+                                                        app.root.current = 'login'
+
+<Login_scr>:
+        name:"login"
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDFloatLayout:
+                MDTopAppBar:
+                        title: "LOGIN"
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_home()]]
+                        pos_hint:{'center_y':.95}
+                        elevation: 10
+                MDLabel:
+                        text:"WELCOME"
+                        color:"#008080"
+                        halign:"center"
+                        pos_hint:{'center_y':0.8}
+                        font_size:"48dp"
+                MDTextField:
+                        id:username
+                        hint_text:"Username"
+                        text_color:"Amber"
+                        helper_text:"expample@tmu.ac.in"
+                        helper_text_mode:"on_focus"
+                        icon_right:"account"
+                        helper_text_size:20
+                        icon_right_color:"#FFA500"
+                        pos_hint:{'center_x':0.5,'center_y':0.654}
+                        size_hint_x:None
+                        width:500
+                        font_size:"25dp"
+                        line_color_normal:"#FFFF00"
+                        line_color_focus:"#FFA500"
+                        multiline:False
+                        mode:"rectangle"
+                        on_text:self.text = self.text.replace(" ","")
+                        write_tab:False
+
+
+                MDTextField:
+                        id:passwd
+                        hint_text:"Password"
+                        helper_text_mode:"on_focus"
+                        icon_right:"eye-off"
+                        password:True
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        size_hint_x:None
+                        width:500
+                        font_size:"25dp"
+                        line_color_normal:"#FFFF00"
+                        line_color_focus:"#FFA500"
+                        mode:"rectangle"
+                        multiline:False
+                        on_text:self.text = self.text.replace(" ","")
+                        write_tab:False
+
+                MDFloatLayout:
+                        spacing:"5dp"
+                        MDCheckbox:
+                                id:cb
+                                size_hint:None, None
+                                width:"30dp"
+                                height:"30dp"
+                                pos_hint:{'center_x':0.3,'center_y':0.4}
+                                on_press:
+                                        passwd.password=False if passwd.password == True else True
+                                        passwd.icon_right = "eye" if passwd.icon_right == "eye-off" else "eye-off"
+
+                        MDLabel:
+                                text: "[ref=Show Password]Show Password[/ref]"
+                                markup:True
+                                halign:"center"
+                                pos_hint:{'center_x':0.5,'center_y':0.4}
+                                font_color:"#FFA500"
+                                on_ref_press:
+                                        cb.active =False if cb.active==True else True
+                                        passwd.password=False if passwd.password == True else True
+                                        passwd.icon_right = "eye" if passwd.icon_right == "eye-off" else "eye-off"
+
+                MDRectangleFlatButton:
+                        text : "SIGN IN"
+                        pos_hint:{'center_x':0.5,'center_y':0.3}
+                        md_bg_color:"#A52A2A"
+                        font_size:"22dp"
+                        on_press:app.get_data()
+
+<Register_scr>:
+        name: "register"
+        Image:
+                source: "liph.png"
+                allow_stretch: True
+                keep_ratio: False
+        MDFloatLayout:
+                MDTopAppBar:
+                        title: "REGISTER"
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_home()]]
+                        pos_hint: {'center_y': .95}
+                        elevation: 10
+
+                MDLabel:
+                        text: "WELCOME"
+                        color: "#008080"
+                        halign: "center"
+                        pos_hint: {'center_y': 0.85}
+                        font_size: "48dp"
+                MDScrollView:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+                        size_hint: 0.9, 0.8
+                        MDBoxLayout:
+                                orientation: "vertical"
+                                spacing: "10dp"
+                                padding:"5dp"
+                                size_hint_y: None
+                                height: self.minimum_height  # Allow content to set the height dynamically for scrolling
+
+                                MDTextField:
+                                        id: admin_fullname
+                                        hint_text: "Full Name"
+                                        helper_text: "Name surname"
+                                        helper_text_mode: "on_focus"
+                                        icon_right: "account"
+                                        icon_right_color: "#FFA500"
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        multiline: False
+                                        mode: "rectangle"
+                                        write_tab: False
+                                MDTextField:
+                                        id: admin_email
+                                        hint_text: "Email"
+                                        helper_text: "example@tmu.ac.in"
+                                        helper_text_mode: "on_focus"
+                                        icon_right: "account"
+                                        icon_right_color: "#FFA500"
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        multiline: False
+                                        mode: "rectangle"
+                                        write_tab: False
+                                MDTextField:
+                                        id: admin_username
+                                        hint_text: "User Name/Enrollment No."
+                                        helper_text: "exa123456"
+                                        helper_text_mode: "on_focus"
+                                        icon_right: "account"
+                                        icon_right_color: "#FFA500"
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        multiline: False
+                                        mode: "rectangle"
+                                        write_tab: False
+                                MDTextField:
+                                        id: admin_new_passwd
+                                        hint_text: "New Password"
+                                        icon_right: "eye-off"
+                                        password: True
+                                        pos_hint: {'center_x': 0.5,'center_y':0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        mode: "rectangle"
+                                        multiline: False
+                                        write_tab: False
+
+                                # Checkbox for Show Password
+                                MDFloatLayout:
+                                        spacing:"5dp"
+                                        padding:"5dp"
+                                        MDCheckbox:
+                                                id: admin_cb
+                                                size_hint:None, None
+                                                width:"30dp"
+                                                height:"30dp"
+                                                pos_hint:{'center_x':0.3,'center_y':0.4}
+                                                on_press:
+                                                        admin_new_passwd.password=False if admin_new_passwd.password == True else True
+                                                        admin_new_passwd.icon_right = "eye" if admin_new_passwd.icon_right == "eye-off" else "eye-off"
+
+                                        MDLabel:
+                                                text: "[ref=Show Password]Show Password[/ref]"
+                                                spacing:"10dp"
+                                                markup:True
+                                                halign:"center"
+                                                pos_hint:{'center_x':0.5,'center_y':0.4}
+                                                font_color:"#FFA500"
+                                                on_ref_press:
+                                                        admin_cb.active =False if admin_cb.active==True else True
+                                                        admin_new_passwd.password=False if admin_new_passwd.password == True else True
+                                                        admin_new_passwd.icon_right = "eye" if admin_new_passwd.icon_right == "eye-off" else "eye-off"
+                                MDTextField:
+                                        id: admin_confirm_passwd
+                                        hint_text: "Confirm Password"
+                                        icon_right: "eye-off"
+                                        password: True
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        mode: "rectangle"
+                                        multiline: False
+                                        write_tab: False
+
+                                MDFloatLayout:
+                                        spacing:"5dp"
+                                        padding:"5dp"
+                                        MDCheckbox:
+                                                id:admin_cb_confirm_passwd
+                                                size_hint:None, None
+                                                width:"30dp"
+                                                height:"30dp"
+                                                pos_hint:{'center_x':0.3,'center_y':0.4}
+                                                on_press:
+                                                        admin_confirm_passwd.password=False if admin_confirm_passwd.password == True else True
+                                                        admin_confirm_passwd.icon_right = "eye" if admin_confirm_passwd.icon_right == "eye-off" else "eye-off"
+
+                                        MDLabel:
+                                                text: "[ref=Show Password]Show Password[/ref]"
+                                                markup:True
+                                                padding:"10dp"
+                                                halign:"center"
+                                                pos_hint:{'center_x':0.5,'center_y':0.4}
+                                                font_color:"#FFA500"
+                                                on_ref_press:
+                                                        admin_cb_confirm_passwd.active =False if admin_cb_confirm_passwd.active==True else True
+                                                        admin_confirm_passwd.password=False if admin_confirm_passwd.password == True else True
+                                                        admin_confirm_passwd.icon_right = "eye" if admin_confirm_passwd.icon_right == "eye-off" else "eye-off"
+                                MDRectangleFlatButton:
+                                        text : "REGISTER"
+                                        pos_hint:{'center_x':0.5,'center_y':0.2}
+                                        md_bg_color:"#A52A2A"
+                                        font_size:"22dp"
+                                        on_press:app.get_admin_data()
+
+
+<User_Dashboard>:
+        name:"user_dashboard"
+        id:user_dashboard
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDScreen:
+                MDNavigationLayout:
+                        MDScreenManager:
+                                MDScreen:
+                                        BoxLayout:
+                                                orientation: 'vertical'
+                                                MDTopAppBar:
+                                                        title: "TMU Library Seat Booking System"
+                                                        md_bg_color:"D2B48C"
+                                                        left_action_items: [["menu", lambda x: nav_drawer1.set_state("open")]]
+                                                        right_action_items: [["login", lambda x: app.switch_to_login()]]
+                                                MDBoxLayout:
+                                                        orientation: 'vertical'
+                                                        padding: "10dp"
+                                                        spacing: "10dp"
+                                                        MDLabel:
+                                                                id:name
+                                                                halign: 'center'
+                                                                font_style: "H4"
+
+                                                        MDBoxLayout:
+                                                                orientation: 'horizontal'
+                                                                spacing: "10dp"
+                                                                pos_hint:{'center_y':0.7}
+                                                                MDBoxLayout:
+                                                                        orientation: 'vertical'
+                                                                        padding: "10dp"
+                                                                        md_bg_color: "D2B48C"
+                                                                        radius: [10,10,10,10]
+                                                                        MDLabel:
+                                                                                text: "Create Student Account"
+                                                                                halign: 'center'
+                                                                                font_style: "H6"
+                                                                        MDRaisedButton:
+                                                                                text: "Register Now"
+                                                                                spacing:"5dp"
+                                                                                pos_hint: {'center_x': 0.5}
+                                                                                on_press:app.switch_to_student_register()
+
+                                                                MDBoxLayout:
+                                                                        orientation: 'horizontal'
+                                                                        spacing: "10dp"
+                                                                        MDBoxLayout:
+                                                                                orientation: 'vertical'
+                                                                                padding: "10dp"
+                                                                                md_bg_color: "D2B48C"
+                                                                                radius: [10,10,10,10]
+                                                                                MDLabel:
+                                                                                        text: "Delete Student Account"
+                                                                                        halign: 'center'
+                                                                                        font_style: "H6"
+                                                                                MDRaisedButton:
+                                                                                        text: "Delete"
+                                                                                        spacing:"5dp"
+                                                                                        pos_hint: {'center_x': 0.5}
+                                                                                        on_press:app.switch_to_student_delete_registration()
+
+
+                                                        MDBoxLayout:
+                                                                orientation: 'horizontal'
+                                                                spacing: "10dp"
+                                                                MDBoxLayout:
+                                                                        orientation: 'vertical'
+                                                                        padding: "10dp"
+                                                                        md_bg_color: "D2B48C"
+                                                                        radius: [10,10,10,10]
+                                                                        MDLabel:
+                                                                                text: "Future Bookings"
+                                                                                halign: 'center'
+                                                                                font_style: "H6"
+                                                                        MDRaisedButton:
+                                                                                text: "View Bookings"
+                                                                                spacing:"5dp"
+                                                                                pos_hint: {'center_x': 0.5}
+                                                                                on_press:app.future_booking()
+
+                                                                MDBoxLayout:
+                                                                        orientation: 'vertical'
+                                                                        padding: "10dp"
+                                                                        md_bg_color: "D2B48C"
+                                                                        radius: [10,10,10,10]
+                                                                        MDLabel:
+                                                                                text: "Past Analysis"
+                                                                                halign: 'center'
+                                                                                font_style: "H6"
+                                                                        MDRaisedButton:
+                                                                                text: "View Analysis"
+                                                                                spacing:"5dp"
+                                                                                pos_hint: {'center_x': 0.5}
+                                                                                on_press:app.switch_to_past_analysis()
+                                                        MDBoxLayout:
+                                                                orientation: 'horizontal'
+                                                                spacing: "10dp"
+                                                                MDBoxLayout:
+                                                                        orientation:'vertical'
+                                                                        padding: "10dp"
+                                                                        md_bg_color: "D2B48C"
+                                                                        radius: [10,10,10,10]
+                                                                        MDLabel:
+                                                                                text: "Check Seats Availability"
+                                                                                halign: 'center'
+                                                                                font_style: "H6"
+                                                                        MDRaisedButton:
+                                                                                text: "Check Status"
+                                                                                spacing:"5dp"
+                                                                                pos_hint: {'center_x': 0.5}
+                                                                                on_press:app.check_status()
+
+                                                                MDBoxLayout:
+                                                                        orientation: 'vertical'
+                                                                        padding: "10dp"
+                                                                        md_bg_color: "D2B48C"
+                                                                        radius: [10,10,10,10]
+                                                                        MDLabel:
+                                                                                text: "Change Admin Password"
+                                                                                halign: 'center'
+                                                                                font_style: "H6"
+                                                                        MDLabel:
+                                                                                id:name1
+                                                                                spacing:"5dp"
+                                                                                padding:"5dp"
+                                                                                halign: 'center'
+
+                                                                        MDRaisedButton:
+                                                                                text: "Change Password"
+                                                                                spacing:"5dp"
+                                                                                pos_hint: {'center_x': 0.5}
+                                                                                on_press:app.switch_to_account_setting()
+                                                        MDBoxLayout:
+                                                                orientation: 'horizontal'
+                                                                spacing: "10dp"
+                                                                md_bg_color: "D2B48C"
+                                                                radius: [10,10,10,10]
+                                                                MDLabel:
+                                                                        text:"Contact Support For Student"
+                                                                        halign: 'center'
+                                                                        font_style: "H6"
+                                                                MDRaisedButton:
+                                                                        text: "Fetch Support Query"
+                                                                        spacing:"5dp"
+                                                                        pos_hint: {'center_x': 0.5}
+                                                                        on_press:app.fetch_query_support()
+
+                        MDNavigationDrawer:
+                                id:nav_drawer1
+                                radius:(0,30,16,0)
+                                MDNavigationDrawerMenu:
+                                        MDNavigationDrawerHeader:
+                                                BoxLayout:
+                                                        orientation: "horizontal"  # Set to horizontal for image and text side by side
+                                                        size_hint: None, None
+                                                        size: "280dp", "200dp"
+                                                        padding: "10dp"
+                                                        spacing: "10dp"  # Space between the image and text
+
+                                                        # Image element
+                                                        Image:
+                                                                id: header_image
+                                                                source: "default_user.png"  # Default image
+                                                                size_hint: None, None
+                                                                size: "100dp", "100dp"
+                                                                pos_hint: {"center_y": 0.5}
+
+
+
+                                                        # User info (Image and Text side by side)
+                                                        BoxLayout:
+                                                                orientation: "vertical"
+                                                                size_hint: None, None
+                                                                padding: "5dp"
+                                                                MDLabel:
+                                                                        id: header_title
+                                                                        text: "User Name"
+                                                                        color: "00FFFF"
+                                                                        halign: "left"
+                                                                        size_hint_x:None
+                                                                        width:"200dp"
+                                                                        font_size: "20dp"
+                                        DrawerClickableItem:
+                                                text:"Home"
+                                                on_press:
+                                                        nav_drawer1.set_state('close')
+                                                        app.root.current = 'user_dashboard'
+                                        DrawerClickableItem:
+                                                text:"Student Registration"
+                                                on_press:
+                                                        nav_drawer1.set_state('close')
+                                                        app.switch_to_student_register()
+                                        DrawerClickableItem:
+                                                text:"Delete Student Registration"
+                                                on_press:
+                                                        nav_drawer1.set_state('close')
+                                                        app.switch_to_student_delete_registration()
+                                        DrawerClickableItem:
+                                                text:"Future Bookings"
+                                                on_press:
+                                                        nav_drawer1.set_state('close')
+                                                        app.future_booking()
+                                        DrawerClickableItem:
+                                                text:"Past Analysis"
+                                                on_press:
+                                                        nav_drawer1.set_state('close')
+                                                        app.switch_to_past_analysis()
+                                        DrawerClickableItem:
+                                                text:"Check Status"
+                                                on_press:
+                                                        nav_drawer1.set_state('close')
+                                                        app.check_status()
+                                        DrawerClickableItem:
+                                                text:"Account Settings"
+                                                on_press:
+                                                        nav_drawer1.set_state('close')
+                                                        app.root.current = "account_setting"
+
+
+                                        DrawerClickableItem:
+                                                text:"Logout"
+                                                on_press:
+                                                        nav_drawer1.set_state('close')
+                                                        app.root.current = "home"
+
+<Student_register>:
+        name: "student_register"
+
+        Image:
+                source: "liph.png"
+                allow_stretch: True
+                keep_ratio: False
+
+        MDFloatLayout:
+                MDTopAppBar:
+                        title: "STUDENT REGISTER"
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_user_dashboard()]]
+                        pos_hint: {'center_y': .95}
+                        elevation: 10
+
+                MDLabel:
+                        text: "WELCOME"
+                        color: "#008080"
+                        halign: "center"
+                        pos_hint: {'center_y': 0.85}
+                        font_size: "48dp"
+
+                MDScrollView:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+                        size_hint: 0.9, 0.8
+
+                        MDBoxLayout:
+                                orientation: "vertical"
+                                spacing: "10dp"
+                                padding:"20dp"
+                                size_hint_y: None
+                                height: self.minimum_height
+                                #size_hint_
+
+                                # Full Name Field
+                                MDTextField:
+                                        id: student_fullname
+                                        hint_text: "Full Name"
+                                        helper_text: "Name surname"
+                                        helper_text_mode: "on_focus"
+                                        icon_right: "account"
+                                        icon_right_color: "#FFA500"
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        multiline: False
+                                        mode: "rectangle"
+                                        write_tab: False
+
+                                # Email Field
+                                MDTextField:
+                                        id: student_email
+                                        hint_text: "Email"
+                                        helper_text: "example@tmu.ac.in"
+                                        helper_text_mode: "on_focus"
+                                        icon_right: "email"
+                                        icon_right_color: "#FFA500"
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        multiline: False
+                                        mode: "rectangle"
+                                        write_tab: False
+
+                                # User Name Field
+                                MDTextField:
+                                        id: student_username
+                                        hint_text: "User Name/Enrollment No."
+                                        helper_text: "exa123456"
+                                        helper_text_mode: "on_focus"
+                                        icon_right: "account"
+                                        icon_right_color: "#FFA500"
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        multiline: False
+                                        mode: "rectangle"
+                                        write_tab: False
+
+                                # New Password Field
+                                MDTextField:
+                                        id: student_new_passwd
+                                        hint_text: "New Password"
+                                        icon_right: "eye-off"
+                                        password: True
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        mode: "rectangle"
+                                        multiline: False
+                                        write_tab: False
+
+                                # Checkbox for New Password
+                                MDFloatLayout:
+                                        spacing: "5dp"
+                                        MDCheckbox:
+                                                id: student_cb_new_passwd
+                                                size_hint: None, None
+                                                width: "30dp"
+                                                height: "30dp"
+                                                pos_hint: {'center_x': 0.3, 'center_y': 0.4}
+                                                on_press:
+                                                        student_new_passwd.password = not student_new_passwd.password
+                                                        student_new_passwd.icon_right = "eye" if student_new_passwd.password == False else "eye-off"
+
+                                        MDLabel:
+                                                text: "[ref=Show Password]Show Password[/ref]"
+                                                markup: True
+                                                halign: "center"
+                                                pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+                                                font_color: "#FFA500"
+                                                on_ref_press:
+                                                        student_cb_new_passwd.active = not student_cb_new_passwd.active
+                                                        student_new_passwd.password = not student_new_passwd.password
+                                                        student_new_passwd.icon_right = "eye" if student_new_passwd.password == False else "eye-off"
+
+                                # Confirm Password Field
+                                MDTextField:
+                                        id: student_confirm_passwd
+                                        hint_text: "Confirm Password"
+                                        icon_right: "eye-off"
+                                        password: True
+                                        pos_hint: {'center_x': 0.5}
+                                        size_hint_x: None
+                                        width: 500
+                                        font_size: "25dp"
+                                        line_color_normal: "#FFFF00"
+                                        line_color_focus: "#FFA500"
+                                        mode: "rectangle"
+                                        multiline: False
+                                        write_tab: False
+
+                                # Checkbox for Confirm Password
+                                MDFloatLayout:
+                                        spacing: "5dp"
+                                        MDCheckbox:
+                                                id: student_cb_confirm_passwd
+                                                size_hint: None, None
+                                                width: "30dp"
+                                                height: "30dp"
+                                                pos_hint: {'center_x': 0.3, 'center_y': 0.38}
+                                                on_press:
+                                                        student_confirm_passwd.password = not student_confirm_passwd.password
+                                                        student_confirm_passwd.icon_right = "eye" if student_confirm_passwd.password == False else "eye-off"
+
+                                        MDLabel:
+                                                text: "[ref=Show Password]Show Password[/ref]"
+                                                markup: True
+                                                halign: "center"
+                                                pos_hint: {'center_x': 0.5, 'center_y': 0.38}
+                                                font_color: "#FFA500"
+                                                on_ref_press:
+                                                        student_cb_confirm_passwd.active = not student_cb_confirm_passwd.active
+                                                        student_confirm_passwd.password = not student_confirm_passwd.password
+                                                        student_confirm_passwd.icon_right = "eye" if student_confirm_passwd.password == False else "eye-off"
+
+                                # Sign In Button
+                                MDRectangleFlatButton:
+                                        text: "REGISTER"
+                                        pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+                                        md_bg_color: "#A52A2A"
+                                        font_size: "22dp"
+                                        on_press: app.get_student_data()
+
+<Delete_student_registration>:
+        name:"student_delete_registration"
+        Image:
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+
+        MDFloatLayout:
+                MDTopAppBar:
+                        title: "Delete Student Account"
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_user_dashboard()]]
+                        pos_hint: {'center_y': .95}
+                        elevation: 10
+
+                MDTextField:
+                        id:delete_student_username
+                        hint_text:"Enter Username"
+                        text_color:"Amber"
+                        helper_text:"eg:tmu123"
+                        helper_text_mode:"on_focus"
+                        icon_right:"account"
+                        helper_text_size:20
+                        icon_right_color:"#FFA500"
+                        pos_hint:{'center_x':0.5,'center_y':0.654}
+                        size_hint_x:None
+                        width:500
+                        font_size:"25dp"
+                        line_color_normal:"#FFFF00"
+                        line_color_focus:"#FFA500"
+                        multiline:False
+                        mode:"rectangle"
+                        on_text:self.text = self.text.replace(" ","")
+                        write_tab:False
+
+                MDRaisedButton:
+                        text : "Delete"
+                        pos_hint:{'center_x':0.5,'center_y':0.5}
+                        md_bg_color:"#FFD700"
+                        font_size:"22dp"
+                        on_release: app.delete_registration()
+
+<Future_Booking>:
+        name:"future_booking"
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDFloatLayout:
+                MDTopAppBar:
+                        title: "TMU Library Seat Booking System"
+                        pos_hint:{'center_y':0.95}
+                        md_bg_color:"D2B48C"
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_user_dashboard()]]
+                MDLabel:
+                        text:"Pending Booking"
+                        #halign:"left"
+                        font_size:"25dp"
+                        pos_hint:{'center_y':0.87}
+                        color:"#FF00FF"
+                MDScrollView:
+                        pos_hint:{"center_x":0.5,"center_y":0.43}
+                        size_hint: 1, 0.8
+                        bar_color: 0, 0, 0, 1
+                        bar_inactive_color: 0, 0, 0, 0.5
+                        MDList:
+                                id:Future_booking
+
+
+<Past_Analysis>:
+        name:"past_analysis"
+        Image:
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDFloatLayout:
+                MDTopAppBar:
+                        title: "PAST ANALYSIS"
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_user_dashboard()]]
+                        pos_hint: {'center_y': .95}
+                        elevation: 10
+                MDRaisedButton:
+                        text: "Select Year"
+                        size_hint: None, None
+                        size: 200, 50
+                        pos_hint: {'center_x': 0.3,'center_y':0.83}
+                        on_release: app.show_year_menu(self)
+                MDRaisedButton:
+                        text: "Select Month"
+                        size_hint: None, None
+                        size: 200, 50
+                        pos_hint: {'center_x': 0.7,'center_y':0.83}
+                        on_release: app.show_month_menu(self)
+                MDCard:
+                        orientation: 'vertical'
+                        size_hint: None, None
+                        size: "200dp", "100dp"
+                        md_bg_color:1, 0.75, 0.0, 1
+                        pos_hint: {'center_x':0.5,'center_y': 0.68}
+                        elevation: 6
+                        padding: 10
+
+                        MDLabel:
+                                id: year_label
+                                text: "Selected Year: None"
+                                size_hint_y: None
+                                height: 30
+                                color: 0, 0, 0, 1
+                                font_size: '18sp'
+
+                        MDLabel:
+                                id: month_label
+                                text: "Selected Month: None"
+                                size_hint_y: None
+                                height: 30
+                                color: 0, 0, 0, 1
+                                font_size: '18sp'
+                        MDRaisedButton:
+                                text: "Update Graph"
+                                size_hint: None, None
+                                size: 200, 50
+                                pos_hint: {'center_x': 0.5}
+                                on_release: app.update_graph()
+                BarGraphWidget:
+                        id: bar_graph
+                        size_hint: 1, 0.7
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        opacity: 0
+<Account_setting>:
+        name:"account_setting"
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        BoxLayout:
+                orientation: 'vertical'
+                MDTopAppBar:
+                        title: "TMU Library Seat Booking System"
+                        md_bg_color:"D2B48C"
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_user_dashboard()]]
+                MDFloatLayout:
+                        MDLabel:
+                                text:"Change Password"
+                                font_size:"35dp"
+                                color:"#008080"
+                                halign:"center"
+                                pos_hint:{"center_y":0.95}
+                        MDTextField:
+                                id:old_passwd
+                                hint_text:"Old Password"
+                                helper_text_mode:"on_focus"
+                                icon_right:"eye-off"
+                                password:True
+                                pos_hint:{'center_x':0.5,'center_y':0.82}
+                                size_hint_x:None
+                                width:500
+                                font_size:"25dp"
+                                line_color_normal:"#FFFF00"
+                                line_color_focus:"#FFA500"
+                                mode:"rectangle"
+                                multiline:False
+                                on_text:self.text = self.text.replace(" ","")
+                                write_tab:False
+                        MDFloatLayout:
+                                MDCheckbox:
+                                        id:cb
+                                        size_hint:None, None
+                                        width:"30dp"
+                                        height:"30dp"
+                                        pos_hint:{'center_x':0.3,'center_y':0.73}
+                                        on_press:
+                                                old_passwd.password=False if old_passwd.password == True else True
+                                                old_passwd.icon_right = "eye" if old_passwd.icon_right == "eye-off" else "eye-off"
+
+                                MDLabel:
+                                        text: "[ref=Show Password]Show Password[/ref]"
+                                        markup:True
+                                        halign:"center"
+                                        pos_hint:{'center_x':0.5,'center_y':0.73}
+                                        font_color:"#FFA500"
+                                        on_ref_press:
+                                                cb.active =False if cb.active==True else True
+                                                old_passwd.password=False if old_passwd.password == True else True
+                                                old_passwd.icon_right = "eye" if old_passwd.icon_right == "eye-off" else "eye-off"
+                        MDTextField:
+                                id:new_passwd
+                                hint_text:"New Password"
+                                helper_text_mode:"on_focus"
+                                icon_right:"eye-off"
+                                password:True
+                                pos_hint:{'center_x':0.5,'center_y':0.65}
+                                size_hint_x:None
+                                width:500
+                                font_size:"25dp"
+                                line_color_normal:"#FFFF00"
+                                line_color_focus:"#FFA500"
+                                mode:"rectangle"
+                                multiline:False
+                                on_text:self.text = self.text.replace(" ","")
+                                write_tab:False
+                        MDFloatLayout:
+                                MDCheckbox:
+                                        id:cb1
+                                        size_hint:None, None
+                                        width:"30dp"
+                                        height:"30dp"
+                                        pos_hint:{'center_x':0.3,'center_y':0.56}
+                                        on_press:
+                                                new_passwd.password=False if new_passwd.password == True else True
+                                                new_passwd.icon_right = "eye" if new_passwd.icon_right == "eye-off" else "eye-off"
+
+                                MDLabel:
+                                        text: "[ref=Show Password]Show Password[/ref]"
+                                        markup:True
+                                        halign:"center"
+                                        pos_hint:{'center_x':0.5,'center_y':0.56}
+                                        font_color:"#FFA500"
+                                        on_ref_press:
+                                                cb1.active =False if cb1.active==True else True
+                                                new_passwd.password=False if new_passwd.password == True else True
+                                                new_passwd.icon_right = "eye" if new_passwd.icon_right == "eye-off" else "eye-off"
+                        MDTextField:
+                                id:con_passwd
+                                hint_text:"Confirm-Password"
+                                helper_text_mode:"on_focus"
+                                icon_right:"eye-off"
+                                password:True
+                                pos_hint:{'center_x':0.5,'center_y':0.48}
+                                size_hint_x:None
+                                width:500
+                                font_size:"25dp"
+                                line_color_normal:"#FFFF00"
+                                line_color_focus:"#FFA500"
+                                mode:"rectangle"
+                                multiline:False
+                                on_text:self.text = self.text.replace(" ","")
+                                write_tab:False
+                        MDFloatLayout:
+                                MDCheckbox:
+                                        id:cb2
+                                        size_hint:None, None
+                                        width:"30dp"
+                                        height:"30dp"
+                                        pos_hint:{'center_x':0.3,'center_y':0.38}
+                                        on_press:
+                                                con_passwd.password=False if con_passwd.password == True else True
+                                                con_passwd.icon_right = "eye" if con_passwd.icon_right == "eye-off" else "eye-off"
+
+                                MDLabel:
+                                        text: "[ref=Show Password]Show Password[/ref]"
+                                        markup:True
+                                        halign:"center"
+                                        pos_hint:{'center_x':0.5,'center_y':0.38}
+                                        font_color:"#FFA500"
+                                        on_ref_press:
+                                                cb2.active =False if cb2.active==True else True
+                                                con_passwd.password=False if con_passwd.password == True else True
+                                                con_passwd.icon_right = "eye" if con_passwd.icon_right == "eye-off" else "eye-off"
+
+                        MDRectangleFlatButton:
+                                text : "CHANGE PASSWORD"
+                                pos_hint:{'center_x':0.5,'center_y':0.28}
+                                md_bg_color:"#A52A2A"
+                                font_size:"17dp"
+                                on_press:app.check_and_update()
+
+<Hall_selection>:
+        name:"hall_selection"
+        on_enter:app.on_enter_on_hall
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDBoxLayout:
+                orientation:"vertical"
+                MDTopAppBar:
+                        title:"Number of Halls"
+                        md_bg_color:"D2B48C"
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_user_dashboard()]]
+                        elevation:3
+
+                MDScrollView:
+                        pos_hint:{"center_x":0.55,"center_y":0.3}
+                        MDList:
+                                id:container
+
+
+<Seat_selection1>:
+        name:"seat_selection1"
+        on_pre_enter:app.on_pre_enter_on_seat_selection1()
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDFloatLayout:
+                MDTopAppBar:
+                        title:"Seat Status"
+                        title_size:"45dp"
+                        md_bg_color:"D2B48C"
+                        pos_hint:{'center_y':0.95}
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_hall_selection()]]
+                        elevation:3
+                MDLabel:
+                        text:"Seat Availablity"
+                        color:"#008080"
+                        halign:"center"
+                        pos_hint:{"center_y":0.85}
+                        font_size:"45dp"
+                        #pos_hint:{"center_x":0.1,"center_y":0.7}
+                MDFloatLayout:
+                        #first row
+                        MDIconButton:
+                                id:seat1
+                                name:"A1"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.1,"center_y":0.77}
+                                on_release:app.check_seat_availability1("A1")
+                        MDIconButton:
+                                id:seat2
+                                name:"A2"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.17,"center_y":0.77}
+                                on_release:app.check_seat_availability1("A2")
+                        MDIconButton:
+                                id:seat3
+                                name:"A3"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.24,"center_y":0.77}
+                                on_release:app.check_seat_availability1("A3")
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.74}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.74}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.74}
+                        MDIconButton:
+                                id:seat7
+                                name:"A7"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.1,"center_y":0.72}
+                                on_release:app.check_seat_availability1("A7")
+                        MDIconButton:
+                                id:seat8
+                                name:"A8"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A8")
+                                pos_hint:{"center_x":0.17,"center_y":0.72}
+                        MDIconButton:
+                                id:seat9
+                                name:"A9"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.24,"center_y":0.72}
+                                on_release:app.check_seat_availability1("A9")
+                        MDIconButton:
+                                id:seat4
+                                name:"A4"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A4")
+                                pos_hint:{"center_x":0.45,"center_y":0.77}
+                        MDIconButton:
+                                id:seat5
+                                name:"A5"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A5")
+                                pos_hint:{"center_x":0.52,"center_y":0.77}
+                        MDIconButton:
+                                id:seat6
+                                name:"A6"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A6")
+                                pos_hint:{"center_x":0.59,"center_y":0.77}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.74}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.74}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.74}
+                        MDIconButton:
+                                icon:'window-closed'
+                                icon_size:"48dp"
+                                disabled:True
+                                disabled_color:"#FFFFFF"
+                                pos_hint:{"center_x":0.67,"center_y":0.74}
+                        MDIconButton:
+                                id:seat10
+                                name:"A10"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A10")
+                                pos_hint:{"center_x":0.45,"center_y":0.72}
+                        MDIconButton:
+                                id:seat11
+                                name:"A11"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A11")
+                                pos_hint:{"center_x":0.52,"center_y":0.72}
+                        MDIconButton:
+                                id:seat12
+                                name:"A12"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A12")
+                                pos_hint:{"center_x":0.59,"center_y":0.72}
+
+                        #second row
+                        MDIconButton:
+                                id:seat13
+                                name:"A13"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A13")
+                                pos_hint:{"center_x":0.1,"center_y":0.67}
+                        MDIconButton:
+                                id:seat14
+                                name:"A14"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A14")
+                                pos_hint:{"center_x":0.17,"center_y":0.67}
+                        MDIconButton:
+                                id:seat15
+                                name:"A15"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A15")
+                                pos_hint:{"center_x":0.24,"center_y":0.67}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.64}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.64}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.64}
+                        MDIconButton:
+                                id:seat19
+                                name:"A19"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A19")
+                                pos_hint:{"center_x":0.1,"center_y":0.62}
+                        MDIconButton:
+                                id:seat20
+                                name:"A20"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A20")
+                                pos_hint:{"center_x":0.17,"center_y":0.62}
+                        MDIconButton:
+                                id:seat21
+                                name:"A21"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A21")
+                                pos_hint:{"center_x":0.24,"center_y":0.62}
+                        MDIconButton:
+                                id:seat16
+                                name:"A16"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A16")
+                                pos_hint:{"center_x":0.45,"center_y":0.67}
+                        MDIconButton:
+                                id:seat17
+                                name:"A17"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A17")
+                                pos_hint:{"center_x":0.52,"center_y":0.67}
+                        MDIconButton:
+                                id:seat18
+                                name:"A18"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A18")
+                                pos_hint:{"center_x":0.59,"center_y":0.67}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.64}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.64}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.64}
+
+                        MDIconButton:
+                                id:seat22
+                                name:"A22"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A22")
+                                pos_hint:{"center_x":0.45,"center_y":0.62}
+                        MDIconButton:
+                                id:seat23
+                                name:"A23"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A23")
+                                pos_hint:{"center_x":0.52,"center_y":0.62}
+                        MDIconButton:
+                                id:seat24
+                                name:"A24"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A24")
+                                pos_hint:{"center_x":0.59,"center_y":0.62}
+                        #third row
+                        MDIconButton:
+                                id:seat25
+                                name:"A25"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A25")
+                                pos_hint:{"center_x":0.1,"center_y":0.57}
+                        MDIconButton:
+                                id:seat26
+                                name:"A26"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A26")
+                                pos_hint:{"center_x":0.17,"center_y":0.57}
+                        MDIconButton:
+                                id:seat27
+                                name:"A27"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A27")
+                                pos_hint:{"center_x":0.24,"center_y":0.57}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.54}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.54}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.54}
+                        MDIconButton:
+                                id:seat31
+                                name:"A31"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A31")
+                                pos_hint:{"center_x":0.1,"center_y":0.52}
+                        MDIconButton:
+                                id:seat32
+                                name:"A32"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A32")
+                                pos_hint:{"center_x":0.174,"center_y":0.52}
+                        MDIconButton:
+                                id:seat33
+                                name:"A32"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A33")
+                                pos_hint:{"center_x":0.24,"center_y":0.52}
+                        MDIconButton:
+                                id:seat28
+                                name:"A28"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A28")
+                                pos_hint:{"center_x":0.45,"center_y":0.57}
+                        MDIconButton:
+                                id:seat29
+                                name:"A29"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A29")
+                                pos_hint:{"center_x":0.52,"center_y":0.57}
+                        MDIconButton:
+                                id:seat30
+                                name:"A30"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A30")
+                                pos_hint:{"center_x":0.59,"center_y":0.57}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.54}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.54}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.54}
+
+                        MDIconButton:
+                                id:seat34
+                                name:"A34"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A34")
+                                pos_hint:{"center_x":0.45,"center_y":0.52}
+                        MDIconButton:
+                                id:seat35
+                                name:"A35"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A35")
+                                pos_hint:{"center_x":0.52,"center_y":0.52}
+                        MDIconButton:
+                                id:seat36
+                                name:"A36"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A36")
+                                pos_hint:{"center_x":0.59,"center_y":0.52}
+                        #fourth row
+                        MDIconButton:
+                                id:seat37
+                                name:"A37"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A37")
+                                pos_hint:{"center_x":0.1,"center_y":0.47}
+                        MDIconButton:
+                                id:seat38
+                                name:"A38"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A38")
+                                pos_hint:{"center_x":0.17,"center_y":0.47}
+                        MDIconButton:
+                                id:seat39
+                                name:"A39"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A39")
+                                pos_hint:{"center_x":0.24,"center_y":0.47}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.44}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.44}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.44}
+                        MDIconButton:
+                                id:seat43
+                                name:"A43"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A43")
+                                pos_hint:{"center_x":0.1,"center_y":0.42}
+                        MDIconButton:
+                                id:seat44
+                                name:"A44"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A44")
+                                pos_hint:{"center_x":0.17,"center_y":0.42}
+                        MDIconButton:
+                                id:seat45
+                                name:"A45"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A45")
+                                pos_hint:{"center_x":0.24,"center_y":0.42}
+                        MDIconButton:
+                                id:seat40
+                                name:"A40"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A40")
+                                pos_hint:{"center_x":0.45,"center_y":0.47}
+                        MDIconButton:
+                                id:seat41
+                                name:"A41"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A41")
+                                pos_hint:{"center_x":0.52,"center_y":0.47}
+                        MDIconButton:
+                                id:seat42
+                                name:"A42"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A42")
+                                pos_hint:{"center_x":0.59,"center_y":0.47}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.44}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.44}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.44}
+                        MDIconButton:
+                                icon:'window-closed'
+                                icon_size:"48dp"
+                                disabled:True
+                                disabled_color:"#FFFFFF"
+                                pos_hint:{"center_x":0.67,"center_y":0.44}
+
+                        MDIconButton:
+                                id:seat46
+                                name:"A46"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A46")
+                                pos_hint:{"center_x":0.45,"center_y":0.42}
+                        MDIconButton:
+                                id:seat47
+                                name:"A47"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A47")
+                                pos_hint:{"center_x":0.52,"center_y":0.42}
+                        MDIconButton:
+                                id:seat48
+                                name:"A48"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A48")
+                                pos_hint:{"center_x":0.59,"center_y":0.42}
+                        #fifth row
+                        MDIconButton:
+                                id:seat49
+                                name:"A49"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A49")
+                                pos_hint:{"center_x":0.1,"center_y":0.37}
+                        MDIconButton:
+                                id:seat50
+                                name:"A50"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A50")
+                                pos_hint:{"center_x":0.17,"center_y":0.37}
+                        MDIconButton:
+                                id:seat51
+                                name:"A51"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A51")
+                                pos_hint:{"center_x":0.24,"center_y":0.37}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.34}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.34}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.34}
+                        MDIconButton:
+                                id:seat55
+                                name:"A55"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A55")
+                                pos_hint:{"center_x":0.1,"center_y":0.32}
+                        MDIconButton:
+                                id:seat56
+                                name:"A56"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A56")
+                                pos_hint:{"center_x":0.17,"center_y":0.32}
+                        MDIconButton:
+                                id:seat57
+                                name:"A57"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A57")
+                                pos_hint:{"center_x":0.24,"center_y":0.32}
+                        MDIconButton:
+                                id:seat52
+                                name:"A52"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A52")
+                                pos_hint:{"center_x":0.45,"center_y":0.37}
+                        MDIconButton:
+                                id:seat53
+                                name:"A53"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A53")
+                                pos_hint:{"center_x":0.52,"center_y":0.37}
+                        MDIconButton:
+                                id:seat54
+                                name:"A54"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A54")
+                                pos_hint:{"center_x":0.59,"center_y":0.37}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.34}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.34}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.34}
+
+                        MDIconButton:
+                                id:seat58
+                                name:"A58"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A58")
+                                pos_hint:{"center_x":0.45,"center_y":0.32}
+                        MDIconButton:
+                                id:seat59
+                                name:"A59"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A59")
+                                pos_hint:{"center_x":0.52,"center_y":0.32}
+                        MDIconButton:
+                                id:seat60
+                                name:"A60"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A60")
+                                pos_hint:{"center_x":0.59,"center_y":0.32}
+                        #sixth row
+                        MDIconButton:
+                                id:seat61
+                                name:"A61"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A61")
+                                pos_hint:{"center_x":0.1,"center_y":0.27}
+                        MDIconButton:
+                                id:seat62
+                                name:"A62"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A62")
+                                pos_hint:{"center_x":0.17,"center_y":0.27}
+                        MDIconButton:
+                                id:seat63
+                                name:"A63"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A63")
+                                pos_hint:{"center_x":0.24,"center_y":0.27}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.24}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.24}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.24}
+                        MDIconButton:
+                                id:seat67
+                                name:"A67"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A67")
+                                pos_hint:{"center_x":0.1,"center_y":0.22}
+                        MDIconButton:
+                                id:seat68
+                                name:"A68"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A68")
+                                pos_hint:{"center_x":0.174,"center_y":0.22}
+                        MDIconButton:
+                                id:seat69
+                                name:"A69"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A69")
+                                pos_hint:{"center_x":0.24,"center_y":0.22}
+                        MDIconButton:
+                                id:seat64
+                                name:"A64"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A64")
+                                pos_hint:{"center_x":0.45,"center_y":0.27}
+                        MDIconButton:
+                                id:seat65
+                                name:"A65"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A65")
+                                pos_hint:{"center_x":0.52,"center_y":0.27}
+                        MDIconButton:
+                                id:seat66
+                                name:"A66"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A66")
+                                pos_hint:{"center_x":0.59,"center_y":0.27}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.24}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.24}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.24}
+
+                        MDIconButton:
+                                id:seat70
+                                name:"A70"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A70")
+                                pos_hint:{"center_x":0.45,"center_y":0.22}
+                        MDIconButton:
+                                id:seat71
+                                name:"A71"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A71")
+                                pos_hint:{"center_x":0.52,"center_y":0.22}
+                        MDIconButton:
+                                id:seat72
+                                name:"A72"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A72")
+                                pos_hint:{"center_x":0.59,"center_y":0.22}
+                        #seventh row
+                        MDIconButton:
+                                id:seat73
+                                name:"A73"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A73")
+                                pos_hint:{"center_x":0.1,"center_y":0.17}
+                        MDIconButton:
+                                id:seat74
+                                name:"A74"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A74")
+                                pos_hint:{"center_x":0.17,"center_y":0.17}
+                        MDIconButton:
+                                id:seat75
+                                name:"A75"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A75")
+                                pos_hint:{"center_x":0.24,"center_y":0.17}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.12}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.12}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.12}
+                        MDIconButton:
+                                id:seat79
+                                name:"A79"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A79")
+                                pos_hint:{"center_x":0.1,"center_y":0.1}
+                        MDIconButton:
+                                id:seat80
+                                name:"A80"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A80")
+                                pos_hint:{"center_x":0.17,"center_y":0.1}
+                        MDIconButton:
+                                id:seat81
+                                name:"A81"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A81")
+                                pos_hint:{"center_x":0.24,"center_y":0.1}
+                        MDIconButton:
+                                id:seat76
+                                name:"A76"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A76")
+                                pos_hint:{"center_x":0.45,"center_y":0.17}
+                        MDIconButton:
+                                id:seat77
+                                name:"A77"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A77")
+                                pos_hint:{"center_x":0.52,"center_y":0.17}
+                        MDIconButton:
+                                id:seat78
+                                name:"A78"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A78")
+                                pos_hint:{"center_x":0.59,"center_y":0.17}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.12}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.12}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.12}
+
+                        MDIconButton:
+                                id:seat82
+                                name:"A82"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A82")
+                                pos_hint:{"center_x":0.45,"center_y":0.1}
+                        MDIconButton:
+                                id:seat83
+                                name:"A83"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A83")
+                                pos_hint:{"center_x":0.52,"center_y":0.1}
+                        MDIconButton:
+                                id:seat84
+                                name:"A84"
+                                icon: "seat"
+                                on_release:app.check_seat_availability1("A84")
+                                pos_hint:{"center_x":0.59,"center_y":0.1}
+                        MDCard:
+                                orientation: 'vertical'
+                                padding: "10dp"
+                                size_hint: None, None
+                                size: "140dp", "120dp"
+                                md_bg_color:"#A89F91"
+                                pos_hint:{"center_x":0.8,'center_y':0.2}
+                                MDLabel:
+                                        text:"Seat Map"
+                                        halign:"center"
+                                        font_size:"20dp"
+                                        color:"#000000"
+
+                                MDGridLayout:
+                                        cols:2
+                                        MDIconButton:
+                                                icon:"seat"
+                                                theme_text_color: "Custom"
+                                                text_color:"#FFFFFF"
+                                        MDLabel:
+                                                text:"Available"
+                                                color:"#FFFFFF"
+                                                halign:"left"
+                                MDGridLayout:
+                                        cols:2
+                                        MDIconButton:
+                                                disabled:True
+                                                icon:"seat"
+                                                #icon_color:"#808080"
+                                                theme_text_color: "Custom"
+                                                text_color:"#808080"
+                                        MDLabel:
+                                                text:"Booked"
+                                                color:"#808080"
+                                                halign:"left"
+
+
+
+
+<Seat_selection2>:
+        name:"seat_selection2"
+        #on_pre_enter:app.on_pre_enter_on_seat_selection()
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDFloatLayout:
+                MDTopAppBar:
+                        title:"Seat Status"
+                        title_size:"45dp"
+                        md_bg_color:"D2B48C"
+                        pos_hint:{'center_y':0.95}
+                        left_action_items: [["arrow-left", lambda x: app.switch_to_hall_selection()]]
+                        elevation:3
+                MDLabel:
+                        text:"Seat Availablity"
+                        color:"#008080"
+                        halign:"center"
+                        pos_hint:{"center_y":0.85}
+                        font_size:"45dp"
+                        #pos_hint:{"center_x":0.1,"center_y":0.85}
+                MDFloatLayout:
+                        #first row
+                        MDIconButton:
+                                id:seat1
+                                name:"B1"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.1,"center_y":0.77}
+                                on_release:app.check_seat_availability2("B1")
+                        MDIconButton:
+                                id:seat2
+                                name:"B2"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.17,"center_y":0.77}
+                                on_release:app.check_seat_availability2("B2")
+                        MDIconButton:
+                                id:seat3
+                                name:"B3"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.24,"center_y":0.77}
+                                on_release:app.check_seat_availability2("B3")
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.74}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.74}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.74}
+                        MDIconButton:
+                                id:seat7
+                                name:"B7"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.1,"center_y":0.72}
+                                on_release:app.check_seat_availability2("B7")
+                        MDIconButton:
+                                id:seat8
+                                name:"B8"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B8")
+                                pos_hint:{"center_x":0.17,"center_y":0.72}
+                        MDIconButton:
+                                id:seat9
+                                name:"B9"
+                                icon: "seat"
+                                pos_hint:{"center_x":0.24,"center_y":0.72}
+                                on_release:app.check_seat_availability2("B9")
+                        MDIconButton:
+                                id:seat4
+                                name:"B4"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B4")
+                                pos_hint:{"center_x":0.45,"center_y":0.77}
+                        MDIconButton:
+                                id:seat5
+                                name:"B5"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B5")
+                                pos_hint:{"center_x":0.52,"center_y":0.77}
+                        MDIconButton:
+                                id:seat6
+                                name:"B6"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B6")
+                                pos_hint:{"center_x":0.59,"center_y":0.77}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.74}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.74}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.74}
+                        MDIconButton:
+                                icon:'window-closed'
+                                icon_size:"48dp"
+                                disabled:True
+                                disabled_color:"#FFFFFF"
+                                pos_hint:{"center_x":0.67,"center_y":0.74}
+                        MDIconButton:
+                                id:seat10
+                                name:"B10"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B10")
+                                pos_hint:{"center_x":0.45,"center_y":0.72}
+                        MDIconButton:
+                                id:seat11
+                                name:"B11"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B11")
+                                pos_hint:{"center_x":0.52,"center_y":0.72}
+                        MDIconButton:
+                                id:seat12
+                                name:"B12"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B12")
+                                pos_hint:{"center_x":0.59,"center_y":0.72}
+
+                        #second row
+                        MDIconButton:
+                                id:seat13
+                                name:"B13"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B13")
+                                pos_hint:{"center_x":0.1,"center_y":0.67}
+                        MDIconButton:
+                                id:seat14
+                                name:"B14"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B14")
+                                pos_hint:{"center_x":0.17,"center_y":0.67}
+                        MDIconButton:
+                                id:seat15
+                                name:"B15"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B15")
+                                pos_hint:{"center_x":0.24,"center_y":0.67}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.64}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.64}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.64}
+                        MDIconButton:
+                                id:seat19
+                                name:"B19"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B19")
+                                pos_hint:{"center_x":0.1,"center_y":0.62}
+                        MDIconButton:
+                                id:seat20
+                                name:"B20"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B20")
+                                pos_hint:{"center_x":0.17,"center_y":0.62}
+                        MDIconButton:
+                                id:seat21
+                                name:"B21"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B21")
+                                pos_hint:{"center_x":0.24,"center_y":0.62}
+                        MDIconButton:
+                                id:seat16
+                                name:"B16"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B16")
+                                pos_hint:{"center_x":0.45,"center_y":0.67}
+                        MDIconButton:
+                                id:seat17
+                                name:"B17"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B17")
+                                pos_hint:{"center_x":0.52,"center_y":0.67}
+                        MDIconButton:
+                                id:seat18
+                                name:"B18"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B18")
+                                pos_hint:{"center_x":0.59,"center_y":0.67}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.64}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.64}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.64}
+
+                        MDIconButton:
+                                id:seat22
+                                name:"B22"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B22")
+                                pos_hint:{"center_x":0.45,"center_y":0.62}
+                        MDIconButton:
+                                id:seat23
+                                name:"B23"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B23")
+                                pos_hint:{"center_x":0.52,"center_y":0.62}
+                        MDIconButton:
+                                id:seat24
+                                name:"B24"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B24")
+                                pos_hint:{"center_x":0.59,"center_y":0.62}
+                        #third row
+                        MDIconButton:
+                                id:seat25
+                                name:"B25"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B25")
+                                pos_hint:{"center_x":0.1,"center_y":0.57}
+                        MDIconButton:
+                                id:seat26
+                                name:"B26"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B26")
+                                pos_hint:{"center_x":0.17,"center_y":0.57}
+                        MDIconButton:
+                                id:seat27
+                                name:"B27"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B27")
+                                pos_hint:{"center_x":0.24,"center_y":0.57}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.54}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.54}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.54}
+                        MDIconButton:
+                                id:seat31
+                                name:"B31"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B31")
+                                pos_hint:{"center_x":0.1,"center_y":0.52}
+                        MDIconButton:
+                                id:seat32
+                                name:"B32"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B32")
+                                pos_hint:{"center_x":0.174,"center_y":0.52}
+                        MDIconButton:
+                                id:seat33
+                                name:"B32"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B33")
+                                pos_hint:{"center_x":0.24,"center_y":0.52}
+                        MDIconButton:
+                                id:seat28
+                                name:"B28"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B28")
+                                pos_hint:{"center_x":0.45,"center_y":0.57}
+                        MDIconButton:
+                                id:seat29
+                                name:"B29"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B29")
+                                pos_hint:{"center_x":0.52,"center_y":0.57}
+                        MDIconButton:
+                                id:seat30
+                                name:"B30"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B30")
+                                pos_hint:{"center_x":0.59,"center_y":0.57}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.54}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.54}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.54}
+
+                        MDIconButton:
+                                id:seat34
+                                name:"B34"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B34")
+                                pos_hint:{"center_x":0.45,"center_y":0.52}
+                        MDIconButton:
+                                id:seat35
+                                name:"B35"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B35")
+                                pos_hint:{"center_x":0.52,"center_y":0.52}
+                        MDIconButton:
+                                id:seat36
+                                name:"B36"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B36")
+                                pos_hint:{"center_x":0.59,"center_y":0.52}
+                        #fourth row
+                        MDIconButton:
+                                id:seat37
+                                name:"B37"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B37")
+                                pos_hint:{"center_x":0.1,"center_y":0.47}
+                        MDIconButton:
+                                id:seat38
+                                name:"B38"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B38")
+                                pos_hint:{"center_x":0.17,"center_y":0.47}
+                        MDIconButton:
+                                id:seat39
+                                name:"B39"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B39")
+                                pos_hint:{"center_x":0.24,"center_y":0.47}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.44}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.44}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.44}
+                        MDIconButton:
+                                id:seat43
+                                name:"B43"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B43")
+                                pos_hint:{"center_x":0.1,"center_y":0.42}
+                        MDIconButton:
+                                id:seat44
+                                name:"B44"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B44")
+                                pos_hint:{"center_x":0.17,"center_y":0.42}
+                        MDIconButton:
+                                id:seat45
+                                name:"B45"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B45")
+                                pos_hint:{"center_x":0.24,"center_y":0.42}
+                        MDIconButton:
+                                id:seat40
+                                name:"B40"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B40")
+                                pos_hint:{"center_x":0.45,"center_y":0.47}
+                        MDIconButton:
+                                id:seat41
+                                name:"B41"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B41")
+                                pos_hint:{"center_x":0.52,"center_y":0.47}
+                        MDIconButton:
+                                id:seat42
+                                name:"B42"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B42")
+                                pos_hint:{"center_x":0.59,"center_y":0.47}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.44}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.44}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.44}
+
+                        MDIconButton:
+                                id:seat46
+                                name:"B46"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B46")
+                                pos_hint:{"center_x":0.45,"center_y":0.42}
+                        MDIconButton:
+                                id:seat47
+                                name:"B47"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B47")
+                                pos_hint:{"center_x":0.52,"center_y":0.42}
+                        MDIconButton:
+                                id:seat48
+                                name:"B48"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B48")
+                                pos_hint:{"center_x":0.59,"center_y":0.42}
+                        #fifth row
+                        MDIconButton:
+                                id:seat49
+                                name:"B49"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B49")
+                                pos_hint:{"center_x":0.1,"center_y":0.37}
+                        MDIconButton:
+                                id:seat50
+                                name:"B50"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B50")
+                                pos_hint:{"center_x":0.17,"center_y":0.37}
+                        MDIconButton:
+                                id:seat51
+                                name:"B51"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B51")
+                                pos_hint:{"center_x":0.24,"center_y":0.37}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.34}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.34}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.34}
+                        MDIconButton:
+                                id:seat55
+                                name:"B55"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B55")
+                                pos_hint:{"center_x":0.1,"center_y":0.32}
+                        MDIconButton:
+                                id:seat56
+                                name:"B56"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B56")
+                                pos_hint:{"center_x":0.17,"center_y":0.32}
+                        MDIconButton:
+                                id:seat57
+                                name:"B57"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B57")
+                                pos_hint:{"center_x":0.24,"center_y":0.32}
+                        MDIconButton:
+                                id:seat52
+                                name:"B52"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B52")
+                                pos_hint:{"center_x":0.45,"center_y":0.37}
+                        MDIconButton:
+                                id:seat53
+                                name:"B53"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B53")
+                                pos_hint:{"center_x":0.52,"center_y":0.37}
+                        MDIconButton:
+                                id:seat54
+                                name:"B54"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B54")
+                                pos_hint:{"center_x":0.59,"center_y":0.37}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.34}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.34}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.34}
+
+                        MDIconButton:
+                                id:seat58
+                                name:"B58"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B58")
+                                pos_hint:{"center_x":0.45,"center_y":0.32}
+                        MDIconButton:
+                                id:seat59
+                                name:"B59"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B59")
+                                pos_hint:{"center_x":0.52,"center_y":0.32}
+                        MDIconButton:
+                                id:seat60
+                                name:"B60"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B60")
+                                pos_hint:{"center_x":0.59,"center_y":0.32}
+                        #sixth row
+                        MDIconButton:
+                                id:seat61
+                                name:"B61"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B61")
+                                pos_hint:{"center_x":0.1,"center_y":0.27}
+                        MDIconButton:
+                                id:seat62
+                                name:"B62"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B62")
+                                pos_hint:{"center_x":0.17,"center_y":0.27}
+                        MDIconButton:
+                                id:seat63
+                                name:"B63"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B63")
+                                pos_hint:{"center_x":0.24,"center_y":0.27}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.24}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.24}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.24}
+                        MDIconButton:
+                                id:seat67
+                                name:"B67"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B67")
+                                pos_hint:{"center_x":0.1,"center_y":0.22}
+                        MDIconButton:
+                                id:seat68
+                                name:"B68"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B68")
+                                pos_hint:{"center_x":0.174,"center_y":0.22}
+                        MDIconButton:
+                                id:seat69
+                                name:"B69"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B69")
+                                pos_hint:{"center_x":0.24,"center_y":0.22}
+                        MDIconButton:
+                                id:seat64
+                                name:"B64"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B64")
+                                pos_hint:{"center_x":0.45,"center_y":0.27}
+                        MDIconButton:
+                                id:seat65
+                                name:"B65"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B65")
+                                pos_hint:{"center_x":0.52,"center_y":0.27}
+                        MDIconButton:
+                                id:seat66
+                                name:"B66"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B66")
+                                pos_hint:{"center_x":0.59,"center_y":0.27}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.24}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.24}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.24}
+
+                        MDIconButton:
+                                id:seat70
+                                name:"B70"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B70")
+                                pos_hint:{"center_x":0.45,"center_y":0.22}
+                        MDIconButton:
+                                id:seat71
+                                name:"B71"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B71")
+                                pos_hint:{"center_x":0.52,"center_y":0.22}
+                        MDIconButton:
+                                id:seat72
+                                name:"B72"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B72")
+                                pos_hint:{"center_x":0.59,"center_y":0.22}
+                        #seventh row
+                        MDIconButton:
+                                id:seat73
+                                name:"B73"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B73")
+                                pos_hint:{"center_x":0.1,"center_y":0.17}
+                        MDIconButton:
+                                id:seat74
+                                name:"B74"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B74")
+                                pos_hint:{"center_x":0.17,"center_y":0.17}
+                        MDIconButton:
+                                id:seat75
+                                name:"B75"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B75")
+                                pos_hint:{"center_x":0.24,"center_y":0.17}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.1,"center_y":0.12}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.17,"center_y":0.12}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.24,"center_y":0.12}
+                        MDIconButton:
+                                id:seat79
+                                name:"B79"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B79")
+                                pos_hint:{"center_x":0.1,"center_y":0.1}
+                        MDIconButton:
+                                id:seat80
+                                name:"B80"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B80")
+                                pos_hint:{"center_x":0.17,"center_y":0.1}
+                        MDIconButton:
+                                id:seat81
+                                name:"B81"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B81")
+                                pos_hint:{"center_x":0.24,"center_y":0.1}
+                        MDIconButton:
+                                id:seat76
+                                name:"B76"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B76")
+                                pos_hint:{"center_x":0.45,"center_y":0.17}
+                        MDIconButton:
+                                id:seat77
+                                name:"B77"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B77")
+                                pos_hint:{"center_x":0.52,"center_y":0.17}
+                        MDIconButton:
+                                id:seat78
+                                name:"B78"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B78")
+                                pos_hint:{"center_x":0.59,"center_y":0.17}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.45,"center_y":0.12}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.52,"center_y":0.12}
+                        MDIconButton:
+                                icon: "rectangle"
+                                theme_text_color: "Custom"
+                                text_color: "#A55A5A"
+                                pos_hint:{"center_x":0.59,"center_y":0.12}
+
+                        MDIconButton:
+                                id:seat82
+                                name:"B82"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B82")
+                                pos_hint:{"center_x":0.45,"center_y":0.1}
+                        MDIconButton:
+                                id:seat83
+                                name:"B83"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B83")
+                                pos_hint:{"center_x":0.52,"center_y":0.1}
+                        MDIconButton:
+                                id:seat84
+                                name:"B84"
+                                icon: "seat"
+                                on_release:app.check_seat_availability2("B84")
+                                pos_hint:{"center_x":0.59,"center_y":0.1}
+                        MDCard:
+                                orientation: 'vertical'
+                                padding: "10dp"
+                                size_hint: None, None
+                                size: "140dp", "120dp"
+                                md_bg_color:"#A89F91"
+                                pos_hint:{"center_x":0.8,'center_y':0.2}
+                                MDLabel:
+                                        text:"Seat Map"
+                                        halign:"center"
+                                        font_size:"20dp"
+                                        color:"#000000"
+
+                                MDGridLayout:
+                                        cols:2
+                                        MDIconButton:
+                                                icon:"seat"
+                                                theme_text_color: "Custom"
+                                                text_color:"#FFFFFF"
+                                        MDLabel:
+                                                text:"Available"
+                                                color:"#FFFFFF"
+                                                halign:"left"
+                                MDGridLayout:
+                                        cols:2
+                                        MDIconButton:
+                                                disabled:True
+                                                icon:"seat"
+                                                #icon_color:"#808080"
+                                                theme_text_color: "Custom"
+                                                text_color:"#808080"
+                                        MDLabel:
+                                                text:"Booked"
+                                                color:"#808080"
+                                                halign:"left"
+
